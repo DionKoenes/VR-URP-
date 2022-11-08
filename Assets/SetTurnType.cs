@@ -9,12 +9,17 @@ public class SetTurnType : MonoBehaviour
     [SerializeField] private ActionBasedContinuousTurnProvider continuousTurn;
 
     [SerializeField] private TeleportationProvider teleport;
+    [SerializeField] private ActivateTeleportationRay teleportRayActivate;
     [SerializeField] private ActionBasedContinuousMoveProvider continuousMove;
 
     public void Start()
     {
-        GameObject.Find("XR Origin");
-        teleport = GetComponent<TeleportationProvider>();
+        snapTurn = GameObject.Find("Locomotion System").GetComponent<ActionBasedSnapTurnProvider>();
+        continuousTurn = GameObject.Find("Locomotion System").GetComponent<ActionBasedContinuousTurnProvider>();
+
+        teleport = GameObject.Find("Locomotion System").GetComponent<TeleportationProvider>();
+        teleportRayActivate = GameObject.Find("Locomotion System").GetComponent<ActivateTeleportationRay>();
+        continuousMove = GameObject.Find("Locomotion System").GetComponent<ActionBasedContinuousMoveProvider>();
     }
 
     public void SetTypeFromIndexTurn(int index)
@@ -36,12 +41,14 @@ public class SetTurnType : MonoBehaviour
         if (index == 0)
         {
             teleport.enabled = false;
+            teleportRayActivate.enabled = false;
             continuousMove.enabled = true;
         }
         else if (index == 1)
         {
+            continuousMove.enabled = false;
             teleport.enabled = true;
-            continuousTurn.enabled = false;
+            teleportRayActivate.enabled = true;
         }
     }
 }
