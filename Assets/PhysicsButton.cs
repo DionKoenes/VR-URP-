@@ -28,7 +28,7 @@ public class PhysicsButton : MonoBehaviour
         source = gameObject.AddComponent<AudioSource>();
         startPos = transform.localPosition;
         joint = GetComponent<ConfigurableJoint>();
-        spotLight = GameObject.Find("Spotlight").GetComponent<GameObject>();
+        GameObject spotLight = gameObject.GetComponent<GameObject>();
     }
 
     // Update is called once per frame
