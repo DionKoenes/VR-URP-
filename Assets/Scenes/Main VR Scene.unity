@@ -876,7 +876,7 @@ GameObject:
   - component: {fileID: 82333312}
   - component: {fileID: 82333311}
   m_Layer: 0
-  m_Name: Spot Light
+  m_Name: Spotlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1371,6 +1371,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: -8428329442019746319, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
+  light: {fileID: 0}
 --- !u!4 &325041347
 Transform:
   m_ObjectHideFlags: 0
