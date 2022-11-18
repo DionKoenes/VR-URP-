@@ -12,14 +12,15 @@ public class SetTurnType : MonoBehaviour
     [SerializeField] private ActivateTeleportationRay teleportRayActivate;
     [SerializeField] private ActionBasedContinuousMoveProvider continuousMove;
 
+/*    [SerializeField] private XRDirectInteractor directGrabLeft;
+    [SerializeField] private XRDirectInteractor directGrabRight;
+    [SerializeField] private XRRayInteractor rayGrabLeft;
+    [SerializeField] private XRRayInteractor rayGrabRight;*/
+
+
     public void Start()
     {
-        snapTurn = GameObject.Find("Locomotion System").GetComponent<ActionBasedSnapTurnProvider>();
-        continuousTurn = GameObject.Find("Locomotion System").GetComponent<ActionBasedContinuousTurnProvider>();
 
-        teleport = GameObject.Find("Locomotion System").GetComponent<TeleportationProvider>();
-        teleportRayActivate = GameObject.Find("Locomotion System").GetComponent<ActivateTeleportationRay>();
-        continuousMove = GameObject.Find("Locomotion System").GetComponent<ActionBasedContinuousMoveProvider>();
     }
 
     public void SetTypeFromIndexTurn(int index)
@@ -40,9 +41,9 @@ public class SetTurnType : MonoBehaviour
     {
         if (index == 0)
         {
+            continuousMove.enabled = true;
             teleport.enabled = false;
             teleportRayActivate.enabled = false;
-            continuousMove.enabled = true;
         }
         else if (index == 1)
         {
@@ -51,4 +52,22 @@ public class SetTurnType : MonoBehaviour
             teleportRayActivate.enabled = true;
         }
     }
+
+    /*public void SetTypeFromIndexGrab(int index)
+    {
+        if (index == 0)
+        {
+            rayGrabLeft.enabled = true;
+            rayGrabRight.enabled = true;
+            directGrabLeft.enabled = false;
+            directGrabRight.enabled = false;
+        }
+        else if (index == 1)
+        {
+            rayGrabLeft.enabled = false;
+            rayGrabRight.enabled = false;
+            directGrabLeft.enabled = true;
+            directGrabRight.enabled = true;
+        }
+    }*/
 }
