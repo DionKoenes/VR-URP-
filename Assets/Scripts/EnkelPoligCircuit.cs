@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class SerieCircuit : MonoBehaviour
 {
+    [SerializeField] private GameObject Battery;
+    [SerializeField] private GameObject Switch;
+    [SerializeField] private GameObject Lamp;
+
+    [SerializeField] private GameObject ButtonSocketNegative;
+    [SerializeField] private Collider lampMin;
+
+    private float power = 0;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +24,14 @@ public class SerieCircuit : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name.Equals("BrownAnchor1"))
+        {
+            Debug.Log("hello");
+        }
     }
 
     /* volt op batterij, wanneer anchorbrown in contact komt met batterijplus zet kabel volt op 5 bijv. 
