@@ -2,22 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SerieCircuit : MonoBehaviour
+public class ElectricalCircuit : MonoBehaviour
 {
     [SerializeField] private GameObject Battery;
     [SerializeField] private GameObject Switch;
     [SerializeField] private GameObject Lamp;
 
-    [SerializeField] private GameObject ButtonSocketNegative;
-    [SerializeField] private Collider lampMin;
+    
+    [SerializeField] private Collider switchMin;
 
-    private float power = 0;
+    
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+   
     }
 
     // Update is called once per frame
@@ -26,11 +26,15 @@ public class SerieCircuit : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider switchMin)
     {
-        if (other.gameObject.name.Equals("BrownAnchor1"))
+        if (switchMin.CompareTag("BrownAnchor"))
         {
-            Debug.Log("hello");
+            Debug.Log("connected");
+        }
+        if (switchMin.CompareTag("BrownAnchor"))
+        {
+            Debug.Log("connected");
         }
     }
 
