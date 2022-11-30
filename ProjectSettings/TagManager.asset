@@ -9,6 +9,8 @@ TagManager:
   - Solution1
   - Solution2
   - BrownAnchor
+  - BlackAnchor
+  - BlueAnchor
   layers:
   - Default
   - TransparentFX

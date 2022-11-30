@@ -1,44 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class ElectricalCircuit : MonoBehaviour
 {
-    [SerializeField] private GameObject Battery;
-    [SerializeField] private GameObject Switch;
-    [SerializeField] private GameObject Lamp;
+    [SerializeField] private GameObject BrownAnchor1;
+    [SerializeField] private GameObject BrownAnchor2;
 
+    [SerializeField] private Collider switchNegCol;
     
-    [SerializeField] private Collider switchMin;
-
-    
-
+    [SerializeField] public bool power;
 
     // Start is called before the first frame update
     void Start()
     {
-   
+        power = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    private void OnTriggerEnter(Collider switchMin)
+    private void OnTriggerEnter(Collider other)
     {
-        if (switchMin.CompareTag("BrownAnchor"))
+        if (other.CompareTag("BrownAnchor"))
         {
-            Debug.Log("connected");
+            Debug.Log("Good Connection");
+            power = true;
         }
-        if (switchMin.CompareTag("BrownAnchor"))
+        else if (other.CompareTag("BlueAnchor"))
         {
-            Debug.Log("connected");
+            Debug.Log("Bad Connection");
+        }
+        else if (other.CompareTag("BlackAnchor"))
+        {
+            Debug.Log("Bad Connection");
         }
     }
 
-    /* volt op batterij, wanneer anchorbrown in contact komt met batterijplus zet kabel volt op 5 bijv. 
-    Wanneer deze andere achor in contact komt met knop negatief. 
-    Dan pas kan de knop de andere lamp aan doen wanneer deze ook aan de lamp zit met een zwarte kabel*/
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("BrownAnchor"))
+        {
+            power = false;
+        }
+    }
 }

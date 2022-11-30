@@ -16,6 +16,8 @@ public class SwitchControll : MonoBehaviour
 
     [SerializeField] private GameObject spotLight;
 
+    [SerializeField] private ElectricalCircuit electricalCircuit;
+
     void Start()
     {
         source = gameObject.AddComponent<AudioSource>();
@@ -25,7 +27,7 @@ public class SwitchControll : MonoBehaviour
 
     void Update()
     {
-        if (switchHit == true)
+        if (switchHit && electricalCircuit.power == true)
         {
             //PlaySound
             source.PlayOneShot(switchSound);
@@ -41,6 +43,23 @@ public class SwitchControll : MonoBehaviour
             else
             {
                 spotLight.SetActive(false);
+                transform.rotation = Quaternion.Euler(transform.eulerAngles.x - switchRotation, transform.eulerAngles.y, transform.eulerAngles.z);
+            }
+        }
+        else if (switchHit == true)
+        {
+            //PlaySound
+            source.PlayOneShot(switchSound);
+            switchHit = false;
+            //if on is true, make on false. And if on is false, make on true.
+            on = !on;
+
+            if (on == true)
+            {
+                transform.rotation = Quaternion.Euler(transform.eulerAngles.x + switchRotation, transform.eulerAngles.y, transform.eulerAngles.z);
+            }
+            else
+            {
                 transform.rotation = Quaternion.Euler(transform.eulerAngles.x - switchRotation, transform.eulerAngles.y, transform.eulerAngles.z);
             }
         }
