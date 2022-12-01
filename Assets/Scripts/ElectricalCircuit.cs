@@ -8,9 +8,13 @@ public class ElectricalCircuit : MonoBehaviour
     [SerializeField] private GameObject BrownAnchor1;
     [SerializeField] private GameObject BrownAnchor2;
 
-    [SerializeField] private Collider switchNegCol;
+/*    [SerializeField] private Collider switchNegCol;
+    [SerializeField] private Collider batteryPositiveCol;*/
     
     [SerializeField] public bool power;
+
+    [SerializeField] private NegativeDetection negDetect;
+    [SerializeField] private PositiveDetection posDetect;
 
     // Start is called before the first frame update
     void Start()
@@ -21,29 +25,16 @@ public class ElectricalCircuit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        Power();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void Power()
     {
-        if (other.CompareTag("BrownAnchor"))
+        if (negDetect.power1 && posDetect.power2)
         {
-            Debug.Log("Good Connection");
             power = true;
         }
-        else if (other.CompareTag("BlueAnchor"))
-        {
-            Debug.Log("Bad Connection");
-        }
-        else if (other.CompareTag("BlackAnchor"))
-        {
-            Debug.Log("Bad Connection");
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("BrownAnchor"))
+        else
         {
             power = false;
         }
