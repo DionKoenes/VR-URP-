@@ -13,8 +13,12 @@ public class ElectricalCircuit : MonoBehaviour
     
     [SerializeField] public bool power;
 
-    [SerializeField] private NegativeDetection negDetect;
-    [SerializeField] private PositiveDetection posDetect;
+    [SerializeField] private NegBrownDetection negBrownDetect;
+    [SerializeField] private PosBrownDetection posBrownDetect;
+    [SerializeField] private NegBlackDetection negBlackDetect;
+    [SerializeField] private PosBlackDetection posBlackDetect;
+    [SerializeField] private NegBlueDetection negBlueDetect;
+    [SerializeField] private PosBlueDetection posBlueDetect;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +34,7 @@ public class ElectricalCircuit : MonoBehaviour
 
     private void Power()
     {
-        if (negDetect.power1 && posDetect.power2)
+        if (negBrownDetect.powerBrown1 && posBrownDetect.powerBrown2 && negBlackDetect.powerBlack1 && posBlackDetect.powerBlack2 && negBlueDetect.powerBlue1 && posBlueDetect.powerBlue2)
         {
             power = true;
         }

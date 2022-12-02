@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PositiveDetection : MonoBehaviour
+public class PosBlackDetection : MonoBehaviour
 {
-    [SerializeField] private GameObject posBrown;
+    [SerializeField] private GameObject posBlack;
+    [SerializeField] private GameObject negBlack;
 
-
-    [SerializeField] public bool power2;
+    [SerializeField] public bool powerBlack2;
 
     // Start is called before the first frame update
     void Start()
     {
-        power2 = false;
+        powerBlack2 = false;
     }
 
     // Update is called once per frame
@@ -23,18 +23,18 @@ public class PositiveDetection : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject == posBrown)
+        if (other.gameObject == posBlack || other.gameObject == negBlack)
         {
             Debug.Log("Good Connection 1");
-            power2 = true;
+            powerBlack2 = true;
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == posBrown)
+        if (other.gameObject == posBlack || other.gameObject == negBlack)
         {
             Debug.Log("Good Connection 1");
-            power2 = false;
+            powerBlack2 = false;
         }
     }
 }
