@@ -13,6 +13,7 @@ TagManager:
   - BlackAnchor
   - 1
   - 2
+  - Climbable
   layers:
   - Default
   - TransparentFX
