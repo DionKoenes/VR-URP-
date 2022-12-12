@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class SetTurnType : MonoBehaviour
@@ -12,25 +13,24 @@ public class SetTurnType : MonoBehaviour
     [SerializeField] private ActivateTeleportationRay teleportRayActivate;
     [SerializeField] private ActionBasedContinuousMoveProvider continuousMove;
 
-/*    [SerializeField] private XRDirectInteractor directGrabLeft;
-    [SerializeField] private XRDirectInteractor directGrabRight;
-    [SerializeField] private XRRayInteractor rayGrabLeft;
-    [SerializeField] private XRRayInteractor rayGrabRight;*/
 
+    [SerializeField] private Material dayMat;
+    [SerializeField] private Material nightMat;
+    [SerializeField] private Light sunmoon;
 
     public void Start()
     {
-
+        
     }
 
     public void SetTypeFromIndexTurn(int index)
     {
-        if(index == 0)
+        if (index == 0)
         {
             snapTurn.enabled = false;
             continuousTurn.enabled = true;
         }
-        else if(index == 1)
+        else if (index == 1)
         {
             snapTurn.enabled = true;
             continuousTurn.enabled = false;
@@ -52,22 +52,18 @@ public class SetTurnType : MonoBehaviour
             teleportRayActivate.enabled = true;
         }
     }
-
-    /*public void SetTypeFromIndexGrab(int index)
+    public void SetTypeFromIndexTime(int index)
     {
         if (index == 0)
         {
-            rayGrabLeft.enabled = true;
-            rayGrabRight.enabled = true;
-            directGrabLeft.enabled = false;
-            directGrabRight.enabled = false;
+            RenderSettings.skybox = dayMat;
+            sunmoon.color = Color.white;
         }
         else if (index == 1)
         {
-            rayGrabLeft.enabled = false;
-            rayGrabRight.enabled = false;
-            directGrabLeft.enabled = true;
-            directGrabRight.enabled = true;
+            RenderSettings.skybox = nightMat;
+            sunmoon.color = Color.cyan;
         }
-    }*/
+    }
 }
+
