@@ -20,7 +20,12 @@ public class SetTurnType : MonoBehaviour
 
     public void Start()
     {
-        
+        ActionBasedSnapTurnProvider snapTurn = GetComponent<ActionBasedSnapTurnProvider>();
+        ActionBasedContinuousTurnProvider continuousTurn = GetComponent<ActionBasedContinuousTurnProvider>();
+
+        TeleportationProvider teleport = GetComponent<TeleportationProvider>();
+        ActivateTeleportationRay teleportRayActivate = GetComponent<ActivateTeleportationRay>();
+        ActionBasedContinuousMoveProvider continuousMove = GetComponent<ActionBasedContinuousMoveProvider>();
     }
 
     public void SetTypeFromIndexTurn(int index)
